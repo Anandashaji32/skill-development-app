@@ -1,0 +1,101 @@
+/* src/App.css */
+.App {
+  min-height: 100vh; /* Ensure the app takes full viewport height */
+  display: flex;
+  flex-direction: column; /* Allows header and main content to stack */
+}
+
+.App.auth-background {
+  background: linear-gradient(135deg, #4a90e2 0%, #2980b9 100%); /* Blue gradient background */
+  position: relative;
+  overflow: hidden; /* Hide overflow from background elements */
+}
+
+.App.auth-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://placehold.co/1920x1080/000000/FFFFFF/png?text=SkillForge+Background'); /* Placeholder for your actual background image */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* Adjust opacity to match the design's transparency */
+  z-index: 0;
+}
+
+/* Styles for the header that will be moved to Header.css */
+.App-header {
+  background-color: transparent; /* Transparent header for auth pages */
+  padding: 15px 40px; /* More padding */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* Ensure it stays above the background pseudo-element */
+  z-index: 10; /* Bring header to front */
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800; /* Bold 'SkillForge' */
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.App-header nav {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Space between nav items */
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.App-header nav a,
+.App-header nav button {
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.App-header nav a:hover,
+.App-header nav button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white on hover */
+  transform: translateY(-1px);
+}
+
+.App-header nav .auth-btn {
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly more prominent for auth buttons */
+    font-weight: 600;
+}
+.App-header nav .auth-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* Main content area styling */
+main {
+  flex-grow: 1; /* Allows main content to take remaining height */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 20px; /* Some padding around content */
+  position: relative; /* For form overlay */
+  z-index: 5; /* Ensure content is above background */
+}
+
+/* Dashboard specific styling - will be moved/refined later */
+.dashboard-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1400px; /* Adjust as per design */
+    height: calc(100vh - 70px); /* Adjust height based on header height */
+    margin: 0 auto;
+    background-color: #f0f2f5; /* Light grey for dashboard background */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* For scrollable content within sidebar/main */
+}

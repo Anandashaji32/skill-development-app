@@ -1,0 +1,238 @@
+/* src/components/ProfileManager.css */
+.profile-manager-container {
+    background-color: #ffffff;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+}
+
+.profile-manager-container h3 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 24px;
+    border-bottom: 1px solid #eee; /* Subtle bottom border for headings */
+    padding-bottom: 10px;
+}
+
+.profile-display {
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure image covers the area without distortion */
+    margin-right: 20px;
+    border: 3px solid #007bff; /* Border color to match theme */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.profile-header h4 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.profile-display p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 15px;
+}
+
+.profile-display p strong {
+    color: #333;
+}
+
+.profile-display a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.profile-display a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.edit-button {
+    background-color: #28a745; /* Green color for edit */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+.edit-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.profile-form .form-group {
+    margin-bottom: 18px;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 7px;
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="url"],
+.profile-form input[type="email"],
+.profile-form input[type="password"],
+.profile-form textarea {
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.profile-form input[type="text"]:focus,
+.profile-form input[type="url"]:focus,
+.profile-form input[type="email"]:focus,
+.profile-form input[type="password"]:focus,
+.profile-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.profile-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 80px;
+}
+
+.profile-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-form .checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto; /* Override general input width */
+}
+
+.profile-form .checkbox-group label {
+    margin-bottom: 0; /* Remove bottom margin for checkboxes */
+    cursor: pointer;
+    font-weight: normal; /* Normal font weight for checkbox labels */
+}
+
+.profile-form .button-group {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 15px; /* Space between buttons */
+    margin-top: 25px;
+}
+
+.profile-form button[type="submit"],
+.setting-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-form button[type="submit"]:hover,
+.setting-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.cancel-button {
+    background-color: #6c757d; /* Gray color for cancel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.file-info {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 40px 0; /* Space above and below the divider */
+}
+
+.settings-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #f0f0f0; /* Light border around sections */
+    border-radius: 5px;
+    background-color: #fcfcfc; /* Very light background for sections */
+}
+
+.settings-section h4 {
+    color: #444;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.private-setting-form {
+    margin-top: 15px;
+}
+
+.delete-account-button {
+    background-color: #dc3545; /* Red color for delete */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.delete-account-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.warning-text {
+    color: #dc3545; /* Red warning text */
+    font-size: 0.9em;
+    margin-top: 10px;
+}

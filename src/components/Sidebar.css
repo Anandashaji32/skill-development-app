@@ -1,0 +1,218 @@
+/* src/components/Sidebar.css */
+.sidebar-container {
+    width: 280px; /* Fixed width for sidebar */
+    background-color: #ffffff; /* White background for sidebar */
+    padding: 25px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow on the right */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px 0 0 12px; /* Rounded corners only on the left side */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+.sidebar-container::-webkit-scrollbar { /* Hide scrollbar for Chrome, Safari, Opera */
+    display: none;
+}
+
+
+.sidebar-header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee; /* Separator */
+    width: 80%; /* Content width */
+}
+
+.sidebar-profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #6a82fb; /* Accent border */
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-user-info h4 {
+    color: #666;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.sidebar-user-info h3 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sidebar-section.learning-progress-summary {
+    width: 80%;
+    background-color: #e6f7ff; /* Light blue background for this section */
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.learning-progress-summary p {
+    font-size: 14px;
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.learning-progress-summary .progress-stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.progress-stats .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-stats .stat-value {
+    font-size: 20px;
+    font-weight: 800;
+    color: #333;
+}
+
+.progress-stats .stat-label {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.sidebar-nav {
+    width: 100%;
+    flex-grow: 1; /* Allows nav to take available vertical space */
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 30px; /* Padding for nav items */
+    color: #555;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active { /* Add 'active' class for current page */
+    background-color: #f0f2f5; /* Light gray background on hover/active */
+    color: #6a82fb; /* Blue text color */
+    border-left: 4px solid #6a82fb; /* Blue border on left */
+    padding-left: 26px; /* Adjust padding due to border */
+}
+
+.sidebar-nav .nav-icon {
+    margin-right: 15px;
+    font-size: 20px; /* Size for emoji/SVG icons */
+    line-height: 1; /* Align icon vertically */
+}
+
+.nav-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 10px 30px 20px; /* Margin for divider */
+}
+
+.sidebar-streak {
+    width: 80%;
+    background: linear-gradient(45deg, #fc5c7d, #6a82fb); /* Gradient background */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: auto; /* Push to the bottom */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.sidebar-streak h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.sidebar-streak p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Responsive adjustments for Sidebar */
+@media (max-width: 1024px) {
+    .sidebar-container {
+        width: 100%; /* Take full width on smaller screens */
+        height: auto;
+        border-radius: 0; /* No rounded corners */
+        box-shadow: none;
+        padding: 20px 0;
+        flex-direction: row; /* Layout items horizontally */
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center;
+        gap: 20px; /* Space between sections */
+    }
+
+    .sidebar-header,
+    .sidebar-section,
+    .sidebar-nav,
+    .sidebar-streak {
+        width: 45%; /* Distribute sections in columns */
+        max-width: 250px;
+        margin: 10px;
+    }
+
+    .sidebar-nav ul {
+        display: flex;
+        flex-direction: column; /* Keep nav items stacked */
+        width: 100%;
+    }
+    .sidebar-nav li a {
+        padding: 8px 15px;
+        text-align: left;
+    }
+    .sidebar-nav li a:hover,
+    .sidebar-nav li a.active {
+        border-left: none; /* Remove left border */
+        border-bottom: 2px solid #6a82fb; /* Add bottom border on hover/active */
+        padding-left: 15px; /* Reset padding */
+    }
+    .nav-divider {
+        display: none; /* Hide divider on small screens */
+    }
+    .sidebar-streak {
+        margin-top: 20px; /* Adjust margin */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-container {
+        flex-direction: column; /* Stack all sections vertically again */
+        align-items: center;
+        padding: 20px;
+    }
+    .sidebar-header,
+    .sidebar-section,
+    .sidebar-nav,
+    .sidebar-streak {
+        width: 90%; /* Take more width */
+        max-width: 350px; /* Constrain max width */
+        margin: 10px auto;
+    }
+    .sidebar-nav li a {
+        justify-content: center; /* Center align nav links */
+    }
+}

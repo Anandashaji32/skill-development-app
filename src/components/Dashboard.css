@@ -1,0 +1,22 @@
+/* src/components/Dashboard.css */
+.dashboard-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1400px; /* Max width of the dashboard content area */
+    min-height: calc(100vh - 70px); /* Adjust height based on header height, min height to ensure layout */
+    margin: 0 auto; /* Center the dashboard layout */
+    background-color: #f0f2f5; /* Light grey background for the dashboard area */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Contains children, especially for scrolling */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    .dashboard-layout {
+        flex-direction: column; /* Stack sidebar and main content vertically on smaller screens */
+        min-height: auto; /* Allow height to adjust */
+        border-radius: 0; /* Remove rounded corners on smaller screens for full width */
+        box-shadow: none; /* Remove shadow */
+    }
+}
