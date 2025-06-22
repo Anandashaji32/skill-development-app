@@ -1,6 +1,6 @@
 // src/components/Header.js
 import React from 'react';
-import './Header.css'; // We'll create this CSS file
+import './Header.css';
 
 function Header({ isAuthenticated, onLogout, onAuthToggle }) {
     return (

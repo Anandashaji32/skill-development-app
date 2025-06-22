@@ -1,6 +1,6 @@
 // src/components/ProfileManager.js
 import React, { useState, useEffect } from 'react';
-import './ProfileManager.css'; // Import the CSS for ProfileManager
+import './ProfileManager.css';
 
 function ProfileManager({ user, onUpdateProfile }) {
     // State to toggle between displaying profile and editing profile
@@ -141,7 +141,7 @@ function ProfileManager({ user, onUpdateProfile }) {
                 <div className="profile-display">
                     <div className="profile-header">
                         {/* Display profile picture; fallback to a placeholder if none is set */}
-                        <img src={profilePicture || 'https://via.placeholder.com/150'} alt="Profile" className="profile-pic" />
+                        <img src={profilePicture || 'https://placehold.co/150x150/random/white?text=User'} alt="Profile" className="profile-pic" />
                         <h4>{displayName || 'N/A'}</h4> {/* Display name or 'N/A' */}
                     </div>
                     <p><strong>Bio:</strong> {shortBio || 'Not provided'}</p>
@@ -274,4 +274,4 @@ function ProfileManager({ user, onUpdateProfile }) {
     );
 }
 
-export default ProfileManager; // Export the ProfileManager component
+export default ProfileManager;

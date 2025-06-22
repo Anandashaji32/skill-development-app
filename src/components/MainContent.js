@@ -1,6 +1,6 @@
 // src/components/MainContent.js
 import React from 'react';
-import './MainContent.css'; // We'll create this CSS
+import './MainContent.css';
 import ProfileManager from './ProfileManager'; // Re-using ProfileManager here
 
 function MainContent({ user, onUpdateProfile }) {

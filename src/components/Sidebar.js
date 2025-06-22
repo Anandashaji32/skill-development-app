@@ -1,6 +1,6 @@
 // src/components/Sidebar.js
 import React from 'react';
-import './Sidebar.css'; // We'll create this CSS
+import './Sidebar.css';
 
 function Sidebar({ user }) {
     // Dummy data for sidebar links/icons

@@ -11,6 +11,10 @@
     border: 1px solid rgba(255, 255, 255, 0.5); /* Subtle border */
     position: relative; /* Ensure it stays above global background */
     z-index: 20; /* Ensure it's above other elements in main */
+    display: flex; /* Use flexbox for centering form content */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .auth-form-container .auth-title {
@@ -22,11 +26,14 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
-.auth-form .form-group {
+/* General input group for spacing */
+.input-group { /* Changed from .form-group to .input-group */
     margin-bottom: 20px;
+    width: 100%; /* Ensure input groups take full width within container */
 }
 
-.auth-form label {
+/* Label styling */
+.input-group label {
     display: block;
     margin-bottom: 8px;
     color: #fff; /* White labels */
@@ -35,10 +42,11 @@
     text-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 
-.auth-form input[type="email"],
-.auth-form input[type="password"],
-.auth-form input[type="text"],
-.auth-form input[type="tel"] {
+/* Input field styling */
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="text"],
+.input-group input[type="tel"] {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid rgba(255, 255, 255, 0.4); /* Lighter border */
@@ -46,38 +54,131 @@
     background-color: rgba(255, 255, 255, 0.1); /* Very light transparent background */
     color: #fff; /* White input text */
     font-size: 16px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Include padding in width calculation */
     transition: all 0.3s ease;
 }
 
-.auth-form input::placeholder { /* Style placeholder text */
+.input-group input::placeholder { /* Style placeholder text */
     color: rgba(255, 255, 255, 0.7);
     font-weight: 300;
 }
 
-.auth-form input[type="email"]:focus,
-.auth-form input[type="password"]:focus,
-.auth-form input[type="text"]:focus,
-.auth-form input[type="tel"]:focus {
+.input-group input[type="email"]:focus,
+.input-group input[type="password"]:focus,
+.input-group input[type="text"]:focus,
+.input-group input[type="tel"]:focus {
     border-color: rgba(255, 255, 255, 0.8); /* Stronger white border on focus */
     background-color: rgba(255, 255, 255, 0.2); /* Slightly less transparent on focus */
     outline: none;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-.auth-form .name-group {
+/* Inline input group for First Name / Last Name */
+.input-group-inline {
     display: flex;
-    gap: 20px; /* Space between First Name and Last Name */
-}
-.auth-form .name-group .input-half {
-    flex: 1; /* Each takes half the space */
+    gap: 20px; /* Space between the two input groups */
+    width: 100%;
+    margin-bottom: 20px;
 }
 
+.input-group-inline .input-group {
+    flex: 1; /* Makes each inner input group take equal space */
+    margin-bottom: 0; /* Remove bottom margin here, as it's handled by parent */
+}
 
-.auth-form .submit-btn {
+/* Options group for Remember me / Forgot Password */
+.options-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px; /* More space above button */
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Custom checkbox styling for 'Remember me' */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 25px; /* Space for custom checkbox */
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #fff; /* White text for label */
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Forgot password link */
+.forgot-password {
+    color: #f0f0f0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Submit/Auth Button */
+.auth-button {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%); /* Gradient button as per design */
+    background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%); /* Gradient button */
     color: white;
     border: none;
     border-radius: 8px;
@@ -85,107 +186,48 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 25px; /* More space above button */
+    margin-top: 25px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.auth-form .submit-btn:hover {
-    transform: translateY(-3px); /* More pronounced lift effect */
+.auth-button:hover {
+    transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.auth-form .form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: -10px; /* Pull it closer to password field */
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.auth-form .checkbox-group {
-    display: flex;
-    align-items: center;
-    color: #fff; /* White text for checkbox label */
-}
-
-.auth-form .checkbox-group input[type="checkbox"] {
-    margin-right: 8px;
-    width: auto;
-    /* Custom checkbox styling (optional, can be more complex with custom SVG/CSS) */
-}
-.auth-form .checkbox-group label {
-    margin-bottom: 0;
-    font-weight: normal;
-    text-shadow: none;
-}
-
-
-.auth-form .forgot-password-link a {
-    color: #f0f0f0; /* Lighter grey for links */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.auth-form .forgot-password-link a:hover {
-    color: #fff; /* White on hover */
-    text-decoration: underline;
-}
-
-.auth-form .toggle-mode {
+/* Divider for OR option */
+.divider {
     text-align: center;
-    margin-top: 25px;
-    color: #fff; /* White text */
-    font-size: 15px;
-}
-
-.auth-form .toggle-mode span {
-    color: #f0f0f0; /* Lighter color for clickable part */
-    cursor: pointer;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    text-decoration: underline; /* Always underline as per design */
-}
-
-.auth-form .toggle-mode span:hover {
-    color: #fff; /* White on hover */
-}
-
-.auth-form .social-login-options {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.auth-form .social-login-options .or-divider {
-    color: #fff; /* White 'OR' text */
-    margin-bottom: 20px;
+    color: #fff;
+    margin: 30px 0; /* Space above and below divider */
     font-weight: 500;
     position: relative;
     padding: 0 10px;
+    width: 100%;
 }
 
-.auth-form .social-login-options .or-divider::before,
-.auth-form .social-login-options .or-divider::after {
+.divider::before,
+.divider::after {
     content: '';
     position: absolute;
     top: 50%;
     width: 40%;
     height: 1px;
-    background-color: rgba(255, 255, 255, 0.4); /* White separator lines */
+    background-color: rgba(255, 255, 255, 0.4);
 }
-.auth-form .social-login-options .or-divider::before { left: 0; }
-.auth-form .social-login-options .or-divider::after { right: 0; }
+.divider::before { left: 0; }
+.divider::after { right: 0; }
 
-
-.auth-form .google-btn {
+/* Google Auth Button */
+.google-auth-button {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.5); /* White border */
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.15); /* Slightly more transparent */
+    background-color: rgba(255, 255, 255, 0.15);
     color: #fff;
     font-size: 16px;
     font-weight: 500;
@@ -194,41 +236,50 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.auth-form .google-btn:hover {
+.google-auth-button:hover {
     background-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.auth-form .google-btn::before {
-    /* Existing SVG data URI for Google icon */
+.google-auth-button::before {
     content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.1 3.25l6.0-6.0C34.69 3.19 29.35 1 24 1 14.88 1 7.18 6.55 3.1 14.28l8.0 6.22C12.21 16.59 17.65 9.5 24 9.5z"/><path fill="#34A853" d="M46.7 24.5c0-1.57-.14-3.08-.38-4.5h-2.12v-6.22h-6.21v-4.5L31.5 5.2l-3.3 3.3c-2.39-2.03-5.56-3.25-9.1-3.25-6.35 0-11.79 7.09-13.79 14.72l8.0 6.22c1.9-7.23 7.34-10.72 13.79-10.72z"/><path fill="#4285F4" d="M24 47c9.12 0 16.82-5.55 20.9-13.28l-8.0-6.22c-1.9 7.23-7.34 10.72-13.79 10.72-6.35 0-11.79-7.09-13.79-14.72l-8.0-6.22C7.18 41.45 14.88 47 24 47z"/><path fill="#FBBC04" d="M46.7 24.5h-2.12c-.24 1.42-.38 2.93-.38 4.5 0 10.19-8.24 18.44-18.44 18.44-4.63 0-8.88-1.74-12.1-4.66l8.0-6.22c3.22 2.92 7.47 4.66 12.1 4.66 7.4 0 13.44-6.04 13.44-13.44 0-1.57-.14-3.08-.38-4.5z"/></svg>');
-    margin-right: 10px; /* Adjusted space */
-    filter: drop-shadow(0 0 1px rgba(0,0,0,0.5)); /* Add a little shadow to the icon for visibility */
+    margin-right: 10px;
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
 }
 
-/* Responsive adjustments for AuthForm */
+/* Toggle mode link (Sign Up / Login) */
+.toggle-mode {
+    text-align: center;
+    margin-top: 25px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer; /* Make the whole paragraph clickable */
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
     .auth-form-container {
         padding: 30px 25px;
     }
-    .auth-form .auth-title {
+    .auth-title {
         font-size: 28px;
     }
-    .auth-form .name-group {
+    .input-group-inline {
         flex-direction: column;
         gap: 15px;
     }
-    .auth-form .form-options {
+    .options-group {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
-    .auth-form .forgot-password-link {
+    .forgot-password {
         text-align: left;
     }
-    .auth-form .social-login-options .or-divider::before,
-    .auth-form .social-login-options .or-divider::after {
-        width: 35%; /* Adjust for smaller screens */
+    .divider::before,
+    .divider::after {
+        width: 35%;
     }
 }
+
