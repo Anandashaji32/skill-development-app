@@ -18,7 +18,7 @@
 
   <!-- Enroll Form in White Card Style -->
   <section class="skill-overview">
-    <form action="backend/enroll.php" method="post" class="enroll-form">
+    <form id="enroll-form" class="enroll-form">
 
       <label for="name">Your Name:</label>
       <input type="text" id="name" name="name" required />
@@ -45,17 +45,30 @@
 
       <input type="submit" value="Confirm Enrollment" class="submit-btn" />
     </form>
+
+    <!-- Message shown after enrollment -->
+    <div id="success-message" style="display: none; margin-top: 20px; color: green; font-weight: bold;">
+      🎉 Enrollment Successful!
+    </div>
   </section>
+
+  <!-- Autofill + Fake Submission JS -->
   <script>
+    // Autofill course_name from URL
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
-  
-      // Only autofill course_name from the URL
       if (params.has('course_name')) {
         document.getElementById('course_name').value = params.get('course_name');
       }
     });
+
+    // Fake form submission to show success message
+    document.getElementById('enroll-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent actual form submission
+      this.style.display = 'none'; // Hide form
+      document.getElementById('success-message').style.display = 'block'; // Show message
+    });
   </script>
-  
+
 </body>
 </html>
